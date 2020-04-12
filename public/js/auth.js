@@ -64,9 +64,13 @@ function validateAll(){
 function validatePass(){
     if(document.getElementById("new_pass").value!=document.getElementById("confirm_pass").value){
         document.getElementById("mismatch").style.visibility="visible";
+        document.getElementById("mismatch").innerHTML=`<center><div class=" text-center alert alert-warning alert-dismissible fade show"  style="width: 300px;"  role="alert">
+        Password is not matching
+       <button type="button" class="close" data-dismiss="alert"aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+       </button>
+   </div></center>`;
         return false;
-    }else{
-        document.getElementById("mismatch").style.visibility="hidden";
+    }else
         return true;
-    }
 }

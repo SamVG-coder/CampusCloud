@@ -1,6 +1,6 @@
 <%- include('../partials/home-header.ejs') %>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-<link rel="stylesheet" href="css/project.css">
+<link rel="stylesheet" href="/css/project.css">
   </head>
   <body>
     <%- include('../includes/navigation.ejs') %>
@@ -16,7 +16,7 @@
 	<div class="dropdown">
 <button class="dropbtn">Select Domain</button>
 <div class="dropdown-content">
-  <form action="/majorproject" method="POST">
+  <form action="/major/projects" method="POST">
     <input class="buttons" type="submit" name ="domain" value="Android Development"/>
     <input class="buttons" type="submit" name ="domain" value="Big Data Analysis"/>
   <input class="buttons" type="submit" name ="domain" value="Computer Vision"/>
@@ -30,7 +30,7 @@
 
 </div>
 </div>
-<form action="/majorproject" method="post">
+<form action="/major/projects" method="post">
 <div class="d-flex justify-content-left h-100" >
   <div class="searchbar"> 
     <input class="search_input" type="text" name="userInput" placeholder="Enter the project or mentor's name... " required />
