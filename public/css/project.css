@@ -29,9 +29,10 @@ body,html{
 
     .searchbar:hover > .search_input{
     padding: 0 10px;
-    width: 300px;
+    width: 250px;
     caret-color:red;
     transition: width 0.4s linear;
+    background-color: #353b48;
     }
 
     .searchbar:hover > .search_icon{
