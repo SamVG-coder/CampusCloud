@@ -16,7 +16,7 @@ exports.getHomePage = (req, res) => {
     res.render('home/majorproject', {
       path: '/majorproject',
       isAuth:req.isAuthenticated(),
-      projects:'',
+      projects:[],
       searched:''
     });
   };
@@ -24,7 +24,7 @@ exports.getHomePage = (req, res) => {
     res.render('home/miniproject', {
       path: '/miniproject',
       isAuth:req.isAuthenticated(),
-      projects:'',
+      projects:[],
       searched:''
     });
   };
