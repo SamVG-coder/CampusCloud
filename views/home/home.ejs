@@ -8,8 +8,10 @@
    <h2 class="display-4" style="color: #ffffff; "><b>Campus Cloud</b></h2>
    <p class="lead" style="color: #ffff66" ;">Hi ! We would love to be a part of your professional journey. Only place where you can get everything related to Campus.</p>
     <br>
-    <button type="button" class="btn btn-dark btn-lg btn-link" style="margin-left: 3%;"><a href="/user/signup"  style="display: inline-block; color: aliceblue;">Register</a>
-    <button type="button"  role="/user/login" class="btn btn-light btn-lg download-button btn-link" style="margin-left: 3%;"><a href="/user/login"  style="display: inline-block; color: rgb(37, 35, 35);">Login</a></button></center>
+    <%if (!isAuth) {%>
+      <button type="button" class="btn btn-dark btn-lg btn-link" style="margin-left: 3%;"><a href="/user/signup"  style="display: inline-block; color: aliceblue;">Register</a>
+        <button type="button"  role="/user/login" class="btn btn-light btn-lg download-button btn-link" style="margin-left: 3%;"><a href="/user/login"  style="display: inline-block; color: rgb(37, 35, 35);">Login</a></button></center>    
+     <% } %> 
  </div>
 </div>
 

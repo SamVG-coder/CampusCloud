@@ -2,10 +2,11 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const bcrypt= require('bcryptjs');
 const nodemailer = require('nodemailer');
+const passport = require("passport");
 
 const User=require('../models/user');
 mongoose.Promise=global.Promise;
-var path="mongodb://localhost:27017/userDB";
+var path="mongodb+srv://admin-super:super@campuscloud-gavwb.mongodb.net/userDB?retryWrites=true&w=majority";
 mongoose.connect(path, {useNewUrlParser: true,useUnifiedTopology: true});
 mongoose.set("useCreateIndex", true); 
 
@@ -16,7 +17,8 @@ exports.getSignupPage=(req, res)=>{
 }
 
 exports.getLoginPage=(req, res)=>{
-    res.render("user/login",{error_msg :'', success_msg:'',pageTitle: 'Login'});
+
+    res.render("user/login",{error_msg :req.flash('error_msg'), success_msg:'',pageTitle: 'Login'});
 }
 
 exports.createUser=("/register",(req,res)=>{
@@ -54,12 +56,12 @@ exports.createUser=("/register",(req,res)=>{
             const transport = nodemailer.createTransport({
             service : 'gmail',
             auth: {
-              user: 'sdmectcampuscloud@gmail.com',
+              user: 'sdmcet.cse.campuscloud@gmail.com',
               pass: 'ccsdmcet'
             }
           });
           const message = {
-            from: 'sdmectcampuscloud@gmail.com', // Sender address
+            from: 'sdmcet.cse.campuscloud@gmail.com', // Sender address
             to: userMail,         // List of recipients
             subject: 'Campus Cloud Student Verification ', // Subject line
             text: "Hi Peppy, Welcome to Campus cloud !!!", // Plain text body
@@ -123,12 +125,12 @@ exports.checkEmail=(req,res)=>{
         const transport = nodemailer.createTransport({
           service : 'gmail',
           auth: {
-            user: 'sdmectcampuscloud@gmail.com',
+            user: 'sdmcet.cse.campuscloud@gmail.com',
             pass: 'ccsdmcet'
           }
         });
         const message = {
-          from: 'sdmectcampuscloud@gmail.com', // Sender address
+          from: 'sdmcet.cse.campuscloud@gmail.com', // Sender address
           to: userMail,         // List of recipients
           subject: 'Campus Cloud Student Verification ', // Subject line
           text: "Hi Peppy, Welcome to Campus cloud !!!", // Plain text body
@@ -185,4 +187,19 @@ exports.setNewPassword=(req,res)=>{
       res.render("user/login",{success_msg:"Password Updated successfully !!!", pageTitle:'Login',error_msg:''});
     });
   });
+}
+
+exports.loginUser=(req, res, next)=> {
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/user/login",
+    failureFlash: true
+    
+  })(req, res, next);
+};
+
+exports.logoutUser=(req,res)=>{
+  req.logout();
+  res.redirect('/');
+
 }

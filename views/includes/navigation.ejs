@@ -14,7 +14,10 @@
     <li class="nav-item <%= path === '/interview' ? 'active' : '' %>"> <a class="nav-link" href="/interview">Interview Questions</a> </li>
     <li class="nav-item <%= path === '/miniproject' ? 'active' : '' %>"> <a class="nav-link" href="/miniproject">Mini Projects</a> </li>
     <li class="nav-item <%= path === '/majorproject' ? 'active' : '' %>"> <a class="nav-link" href="/majorproject">Major Projects</a> </li>
-    <li class="nav-item <%= path === '/study-material' ? 'active' : '' %>"> <a class="nav-link" href="/study-material">Study Materials</a></li> 
-    </ul>
+    <li class="nav-item <%= path === '/study-material' ? 'active' : '' %>"> <a class="nav-link" href="/study-material">Study Materials</a></li>  
+    <%if (isAuth) {%>
+     <li class="nav-item " style="float: right;"> <a class="nav-link" href="/user/logout">Logout</a> </li> %>
+    <% } %> 
+</ul>
     </div>
     </nav>

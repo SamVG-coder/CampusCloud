@@ -1,10 +1,10 @@
-
+require('../config/is-auth');
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
 const Major=require('../models/majorproject');
 mongoose.Promise=global.Promise;
-var path="mongodb://localhost:27017/userDB";
+var path="mongodb+srv://admin-super:super@campuscloud-gavwb.mongodb.net/userDB?retryWrites=true&w=majority";
 mongoose.connect(path, {useNewUrlParser: true,useUnifiedTopology: true});
 mongoose.set("useCreateIndex", true); 
 
@@ -16,7 +16,8 @@ exports.searchProjects=(req,res)=>{
         res.render('home/majorproject', {
             path: '/majorproject',
             projects : found ,
-            searched:key
+            searched:key,
+            isAuth: req.isAuthenticated()
           });
         });
     }
@@ -25,7 +26,8 @@ exports.searchProjects=(req,res)=>{
          res.render('home/majorproject', {
             path: '/majorproject',
             projects : found ,
-            searched:"All"
+            searched:"All",
+            isAuth: req.isAuthenticated()
           });
         });
     }   
@@ -34,7 +36,8 @@ exports.searchProjects=(req,res)=>{
          res.render('home/majorproject', {
             path: '/majorproject',
             projects : found ,
-            searched:req.body.domain
+            searched:req.body.domain,
+            isAuth: req.isAuthenticated()
         });
     }); 
     }
