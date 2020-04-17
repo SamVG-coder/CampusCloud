@@ -15,13 +15,15 @@ exports.getHomePage = (req, res) => {
   exports.getMajorProjectPage = (req, res) => {
     res.render('home/majorproject', {
       path: '/majorproject',
-      isAuth:req.isAuthenticated()
+      isAuth:req.isAuthenticated(),
+      projects:''
     });
   };
   exports.getMiniProjectPage = (req, res) => {
     res.render('home/miniproject', {
       path: '/miniproject',
-      isAuth:req.isAuthenticated()
+      isAuth:req.isAuthenticated(),
+      projects:''
     });
   };
   
