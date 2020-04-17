@@ -61,13 +61,14 @@
       <% });%> 
     </div>
   </div>    
-    <% }); %> 
-
-  <% } if(projects.length===0){%>
+    <% }); %>
+    <% if(projects.length===0){%>
+      <br>
+    <center><h3 style="color:red;"> No Projects matched your search. Try something else !!!</h3></center>
     <br>
-  <center><h3 style="color:red;"> No Projects matched your search. Try something else !!!</h3></center>
-  <br>
-  <% } %> 
+    <% } %>  
+
+  <% }%>
 
     <div class="container h-100" >
       <b style="font-size: 30px;"> About Major Project :</b>
