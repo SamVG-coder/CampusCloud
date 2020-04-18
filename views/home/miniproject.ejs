@@ -5,11 +5,12 @@
   <body>
     <%- include('../includes/navigation.ejs') %>
   <div class="jumbotron jumbotron-fluid" >
-  
+    <button type="button" class="btn btn-success " style="float: right; color: white;"><a href="/mini/add" style="color: white; text-decoration: none;">Click here to Add Miniproject</a></button>
    <div >
    <div class="container" >
   <div class="w-100 p-1" >
     <h1 class="display-4 " ><b> Mini Project</b></h1>
+   
     <p class="lead" style="color: #ffff66 ;">Use Domain option to sort the list of Miniproject. </p>
 
     <p class="lead"></p>
@@ -23,13 +24,12 @@
       <input class="buttons" type="submit" name ="domain" value="IOT"/>
       <input class="buttons" type="submit" name ="domain" value="Machine Learning"/>
       <input class="buttons" type="submit" name ="domain" value="Web Technologies"/>
-      <input class="buttons" type="submit" name ="domain" value="Web Technologies"/>
       <input class="buttons" type="submit" name ="domain" value="All"/>  
       </form>
     
+</div>
+</div>
 
-</div>
-</div>
 <form action="/majorproject" method="post">
   <div class="d-flex justify-content-left h-100" >
     <div class="searchbar"> 

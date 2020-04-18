@@ -13,6 +13,8 @@ const errorController = require('./controllers/error');
 const homeRoutes = require('./routes/homeRoutes');
 const userRoutes = require('./routes/userRoutes');
 const majorprojectRoutes = require('./routes/majorprojectRoutes');
+const miniprojectRoutes = require('./routes/miniprojectRoutes');
+
 require('./config/is-auth');
 
 const app = express();
@@ -42,6 +44,7 @@ app.use(cookieParser());
 app.use(flash());
 
 app.use('/major',majorprojectRoutes);
+app.use('/mini',miniprojectRoutes);
 app.use('/user',userRoutes);
 app.use('',homeRoutes);
 
