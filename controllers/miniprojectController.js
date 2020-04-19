@@ -3,10 +3,6 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const Mini=require('../models/miniproject');
 
-mongoose.Promise=global.Promise;
-var path="mongodb+srv://admin-super:super@campuscloud-gavwb.mongodb.net/userDB?retryWrites=true&w=majority";
-mongoose.connect(path, {useNewUrlParser: true,useUnifiedTopology: true});
-mongoose.set("useCreateIndex", true);
 
 exports.getAddProjectPage=(req,res)=>{
     res.render('miniproject/addMiniproject',{ success_msg:'',

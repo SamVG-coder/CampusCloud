@@ -6,9 +6,6 @@ const passport = require("passport");
 const Student=require('../models/student');
 const User=require('../models/user');
 mongoose.Promise=global.Promise;
-var path="mongodb+srv://admin-super:super@campuscloud-gavwb.mongodb.net/userDB?retryWrites=true&w=majority";
-mongoose.connect(path, {useNewUrlParser: true,useUnifiedTopology: true});
-mongoose.set("useCreateIndex", true); 
 
 exports.getSignupPage=(req, res)=>{
     res.render("user/signup",{error_msg :'', success_msg:'', pageTitle: 'Sign Up'
