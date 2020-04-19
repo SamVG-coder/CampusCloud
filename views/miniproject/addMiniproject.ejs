@@ -1,6 +1,17 @@
 <%- include('../partials/home-header.ejs') %>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/project.css">
+<style>
+.forms{
+    display: inline-flex;
+}
+@media screen and (max-width: 992px) {
+  .forms {
+    display: inline;
+  }
+}
+
+</style>
   </head>
   <body>
     <%- include('../includes/navigation.ejs') %>
@@ -16,35 +27,149 @@
     <div class="container col-md-6 ">  
             <center> <h2 class="register-heading">Add Mini Project</h2></center>
             <br>
-            <form>
-                
-                <div class="form-group">
-                  <label for="name">Project Name :</label>
-                  <input type="text" class="form-control" id="name">
+            <% if(success_msg != ''){ %>
+               <div class=" text-center alert alert-success alert-dismissible fade show"  role="alert">
+                    <b><%= success_msg %></b>
+                   <button type="button" class="close" data-dismiss="alert"aria-label="Close">
+                       <span aria-hidden="true">&times;</span>
+                   </button>
+               </div>
+               <br>
+               <% } %> 
+               <% if(error_msg != ''){ %>
+                <div class=" text-center alert alert-danger alert-dismissible fade show"  role="alert">
+                     <b><%= error_msg %></b>
+                    <button type="button" class="close" data-dismiss="alert"aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <div class="fluid"></div>
-                <Label>Student 1 : </Label>
-                <div class="form-group col-md-6">
-                    <label for="name1">Name :</label>
-                    <input type="text" class="form-control" id="name2">
+                <br>
+                <% } %> 
+            <div class="container">
+    
+                <form action="/mini/submitDetails" method="POST">
+                    
+                      <div class="form-group ">
+                      <label for="name">Project Name :</label>
+                      <input type="text" class="form-control" name="name_project" id="name_project" required >
+                     </div>
+                     <div class="form-group ">
+                        <label for="name">Guide :</label>
+                        <select class="form-control" name="guide"id="guide" required >
+                          <option>prof. Anand pashupatimath</option>
+                          <option>Prof. Anand Vaidya</option>
+                          <option>Prof. Archana Nandibewoor</option>
+                          <option>Prof. Basavaraj Vaddatti</option>
+                          <option>Prof. Govind Negalur</option>
+                          <option>Prof. Indira Umarji</option>
+                          <option>Dr. Jayadevi C Karur</option>
+                          <option>Prof. Jayateerth V Vadavi </option>                          
+                          <option>Prof. Nita Khakandki</option>
+                          <option>Prof. Pratap Kumar</option>
+                          <option>Dr. Pushpalatha S N</option>
+                          <option>Prof. Ramachandranayak N Yadawad</option>
+                          <option>Prof. Ranganath Yadwad</option>
+                          <option>Prof. Rashmi Athanikar</option>
+                          <option>Prof. Ravindra Dastikop </option>
+                          <option>Prof. S B Kulkarni</option>
+                          <option>Prof. Sandhya S V</option>
+                          <option>Dr. Shrihari M Joshi</option>
+                          <option>Prof. Smitesh Patravali</option>
+                          <option>Prof. Sreedhar G Yadawad</option>
+                          <option>Prof. Vidya Uttur</option>
+                          <option>Dr. Vidyagouri Hemadri</option>
+                          <option>Dr. Umakant P Kulkarni</option>
+                        </select>
+                      </div>
+                      <div class="form-group ">
+                        <label for="name">domain :</label>
+                        <select class="form-control" name="domain"id="domain" required >
+                          <option>Android Development</option>
+                          <option>Web Technologies</option>
+                          <option>Big Data Analysis</option>
+                          <option>Machine Learning</option>
+                          <option>Artificial Intelligence</option>
+                          <option>IOT</option>
+                          <option>Computer Vision</option>
+                          <option>Computer Networks</option>
+                          <option>others</option>
+                        </select>
+
+                      </div>
+              <div class="form-inline">
+            
+            <Label>Student 1 : </Label>
+            
+             <div class="form-group col-md-4"> 
+            <label for="name1"> Name :</label> <input type="text" class="form-control" name="name_s1" id="name_s1" required > </div> 
+            
+            <div class="form-group col-md-4">
+            <label for="name1">usn :</label> 
+            <input type="text" class="form-control" id="usn_s1"name="usn_s1" required ></div></div>
+            
+            <div class="form-inline">
+            
+            <Label>Student 2 : </Label>
+            
+             <div class="form-group col-md-4"> 
+            <label for="name1"> Name :</label> <input type="text" class="form-control" name="name_s2"id="name_s2" required > </div> 
+            
+            <div class="form-group col-md-4">
+            <label for="name1">usn :</label> 
+            <input type="text" class="form-control" name="usn_s2"id="usn_s2" required ></div></div>
+            
+                
+            <div class="form-inline">
+            
+            <Label>Student 3 : </Label>
+            
+             <div class="form-group col-md-4"> 
+            <label for="name1"> Name :</label> <input type="text" class="form-control" name="name_s3"id="name_s3" required > </div> 
+            
+            <div class="form-group col-md-4">
+            <label for="name1">usn :</label> 
+            <input type="text" class="form-control" name="usn_s3"id="usn_s3" required ></div></div>
+            
+            <div class="form-inline">
+            
+            <Label>Student 4 : </Label>
+            
+             <div class="form-group col-md-4"> 
+            <label for="name1">Name :</label> <input type="text" class="form-control" name="name_s4" id="name_s4" > </div> 
+            
+            <div class="form-group col-md-4">
+            <label for="name1">usn :</label> 
+            <input type="text" class="form-control" name="usn_s4"id="usn_s4"></div></div>
+                
+               <div class="forms">
+                <div class="form-group col-md-8">
+                    <label for="name">Batch</label>
+                               <input type="text" class="form-control" name="batch" id="batch" pattern="[A-Ba-b][1-20]" placeholder=" example : A1, A12, B5 etc... "required >
                   </div>
-                  <div class="form-group col-md-6">
-                    <label for="name1">usn :</label>
-                    <input type="text" class="form-control" id="name2">
+                  
+                  <div class="form-group col-md-8">
+                    <label for="name">Year:</label>
+                               <input type="number" class="form-control"min="2017" max="2100"name="year"id="name_project" value="2019" readonly >
                   </div>
-
-
-                <button type="submit" class="btn btn-primary">Submit</button>
-
-              </form>
+               </div>
+                <div class="form-group">
+                  <label for="name">Description :</label>
+                   <textarea class="form-control" name="description"  id="description" rows="5" required ></textarea>
+                </div>
+                <center><input type="submit" class="btn btn-success" value="Submit"> </center>
+            </form>
+            </div>
     </div>
 </div>
 </div>
 </div>
 </div>
-    <div class="container h-100" >
-      <b style="font-size: 30px;">Instruction to Mini Project :</b>
-  <p class="lead"><h5></h5> </p>
-    </div>
+    <!-- <div class="container h-100" >
+      <b style="font-size: 30px;">Instruction to add mini project :</b>
+  <p class="lead"><h5><ul>
+    <li>Select the domain as others if your project domain is not mentioned. </li>
+    <li>Enter the Guide name with </li>
+  </ul></h5> </p>
+    </div> -->
   </body>
 </html>

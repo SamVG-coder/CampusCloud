@@ -7,7 +7,8 @@ var MiniSchema = new mongoose.Schema({
     guide: String,
     batch: String,
     academicYear: Number,
-    description: String
+    description: String,
+    uploadedBy: String,
    });
 
 

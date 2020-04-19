@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const bcrypt= require('bcryptjs');
 const nodemailer = require('nodemailer');
 const passport = require("passport");
-
+const Student=require('../models/student');
 const User=require('../models/user');
 mongoose.Promise=global.Promise;
 var path="mongodb+srv://admin-super:super@campuscloud-gavwb.mongodb.net/userDB?retryWrites=true&w=majority";
@@ -24,64 +24,78 @@ exports.getLoginPage=(req, res)=>{
 exports.createUser=("/register",(req,res)=>{
     var newUser=new User(req.body);
     var userMail=req.body.email;
-    
-      User.findOne({ $or: [ {usn :newUser.usn}, { email: newUser.email } ] },(err, foundUser)=>{
+    Student.findOne({$and :[{usn:newUser.usn},{email:newUser.email}]},(err, foundUser)=>{
+      console.log(foundUser)
+      if(foundUser===null){
+        Student.findOne({usn:newUser.usn},(err, User)=>{
+          console.log(foundUser)
+          if( User){
+          error_msg='Entered email and usn is not matching. USN: '+User.usn+'is matching with email: '+User.email;
+          res.render('user/signup',{error_msg:error_msg , pageTitle:'Sign Up'})
+          }
+          })
+      }
+      else{
+        User.findOne({ $or: [ {usn :newUser.usn}, { email: newUser.email } ] },(err, foundUser)=>{
 
-        if (err) {
-          console.log(err);
-        } else {
-          if (foundUser==null ||foundUser.verified==false) {
-            if(foundUser!==null && foundUser.verified==false){
-              User.findOneAndDelete({usn:foundUser.usn },(err, foundUser)=>{
-
-                if (err) {
-                  console.log(err);
+          if (err) {
+            console.log(err);
+          } else {
+            if (foundUser==null ||foundUser.verified==false) {
+              if(foundUser!==null && foundUser.verified==false){
+                User.findOneAndDelete({usn:foundUser.usn },(err, foundUser)=>{
+  
+                  if (err) {
+                    console.log(err);
+                  }
+                });
+              }
+              newUser.username=newUser.usn;
+              newUser.otp=Math.floor(Math.random()*10000);
+              bcrypt.hash(req.body.password , 5, function(err, hashedPassword) {
+                newUser.password=hashedPassword.slice();
+                //console.log( "hashed :" + hashedPassword);
+                newUser.verified=false;
+                newUser.save(function(error){
+                    if(error){
+                    console.log(error);
                 }
               });
-            }
-            newUser.username=newUser.usn;
-            newUser.otp=Math.floor(Math.random()*10000);
-            bcrypt.hash(req.body.password , 5, function(err, hashedPassword) {
-              newUser.password=hashedPassword.slice();
-              //console.log( "hashed :" + hashedPassword);
-              newUser.verified=false;
-              newUser.save(function(error){
-                  if(error){
-                  console.log(error);
+            });
+            
+              console.log("otp : "+newUser.otp);
+              const transport = nodemailer.createTransport({
+              service : 'gmail',
+              auth: {
+                user: 'sdmcet.cse.campuscloud@gmail.com',
+                pass: 'ccsdmcet'
               }
             });
-          });
-          
-            console.log("otp : "+newUser.otp);
-            const transport = nodemailer.createTransport({
-            service : 'gmail',
-            auth: {
-              user: 'sdmcet.cse.campuscloud@gmail.com',
-              pass: 'ccsdmcet'
-            }
-          });
-          const message = {
-            from: 'sdmcet.cse.campuscloud@gmail.com', // Sender address
-            to: userMail,         // List of recipients
-            subject: 'Campus Cloud Student Verification ', // Subject line
-            text: "Hi Peppy, Welcome to Campus cloud !!!", // Plain text body
-            html:"<h1> your verification code is "+newUser.otp+"</h1>"
-        };
-        transport.sendMail(message, function(err, info) {
-        if (err) {
-          console.log(err)
-        } else {
-           //console.log(info);
+            const message = {
+              from: 'sdmcet.cse.campuscloud@gmail.com', // Sender address
+              to: userMail,         // List of recipients
+              subject: 'Campus Cloud Student Verification ', // Subject line
+              text: "Hi Peppy, Welcome to Campus cloud !!!", // Plain text body
+              html:"<h1> your verification code is "+newUser.otp+"</h1>"
+          };
+          transport.sendMail(message, function(err, info) {
+          if (err) {
+            console.log(err)
+          } else {
+             //console.log(info);
+          }
+      });
+      res.render("user/otp" ,{error_msg :'',pageTitle : 'Verification',path:'/signup',email:userMail});
+    }
+    else{
+          error_msg="user exists with entered USN : "+newUser.usn+" or Gmail: " +userMail;
+            res.render("user/signup",{error_msg:error_msg, pageTitle:'Sign Up'});
+          }
         }
-    });
-    res.render("user/otp" ,{error_msg :'',pageTitle : 'Verification',path:'/signup',email:userMail});
-  }
-  else{
-        error_msg="user exists with entered USN : "+newUser.usn+" or Gmail: " +userMail;
-          res.render("user/signup",{error_msg:error_msg, pageTitle:'Sign Up'});
-        }
+      });
       }
-    });
+    })
+
   });
 
 
