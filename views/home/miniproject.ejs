@@ -17,31 +17,64 @@
 	<div class="dropdown" >
     <button class="dropbtn">Select Domain</button>
     <div class="dropdown-content">
-      <form action="/majorproject" method="POST">
+      <form action="/mini/projects" method="POST">
         <input class="buttons" type="submit" name ="domain" value="Android Development"/>
         <input class="buttons" type="submit" name ="domain" value="Big Data Analysis"/>
       <input class="buttons" type="submit" name ="domain" value="Computer Vision"/>
       <input class="buttons" type="submit" name ="domain" value="IOT"/>
       <input class="buttons" type="submit" name ="domain" value="Machine Learning"/>
+      <input class="buttons" type="submit" name ="domain" value="Artificial Intelligence"/>
       <input class="buttons" type="submit" name ="domain" value="Web Technologies"/>
+      <input class="buttons" type="submit" name ="domain" value="Computer Networks"/>
       <input class="buttons" type="submit" name ="domain" value="All"/>  
       </form>
     
 </div>
 </div>
 
-<form action="/majorproject" method="post">
+<form action="/mini/projects" method="post">
   <div class="d-flex justify-content-left h-100" >
     <div class="searchbar"> 
-      <input class="search_input" type="text" name="userInput" placeholder="Enter the project or mentor's name... " required />
+      <input class="search_input" type="text" name="userInput" placeholder="Search project or mentor's name" required />
       <button type="submit" class="search_icon"><i class="fas fa-search"></i></button>
     </div>
   </div>
 </form>
+
+
+
 </div>
 </div>
 </div>
 </div>
+<% if(typeof projects != 'undefined'){ %> 
+  <b style="font-size: 40px; padding-left:10px;"> Search Results for  " <%= searched%> " :</b>
+  <% projects.forEach(function (project) { %> 
+    <div style="margin-bottom:0em;padding: 3%;">
+  <div  class="alert alert-success alert-dismissible fade show" role="alert" style="margin-bottom:0em;padding: 1%;">
+   <b>Title : &nbsp;</b>  <%= project.projectName%>
+   <br><b>Domain : &nbsp;</b>  <%= project.domain%>
+   <br><b>Batch : &nbsp;</b>  <%= project.batch%>
+   <br><b>Academic Year : &nbsp;</b>  <%= project.academicYear%>
+   <br><b> Description : &nbsp;</b>  <%= project.description%>
+   <br><b>Under the Guidance of : &nbsp;</b> <%= project.guide %>  
+   <br><b>Team : &nbsp;</b>  
+   <% project.teamMates.forEach(function (element) { %>   
+      <%= element.name  %>  
+      (<%= element.usn  %>)     
+      &nbsp; 
+      <% });%> 
+      <br><b>Uploaded By : &nbsp;</b> <%= project.uploadedBy %>  
+    </div>
+  </div>    
+    <% }); %>
+    <% if(projects.length===0){%>
+      <br>
+    <center><h3 style="color:red;"> No Projects matched your search. Try something else !!!</h3></center>
+    <br>
+    <% } %>  
+
+  <% }%>
     <div class="container h-100" >
       <b style="font-size: 30px;"> About Mini Project :</b>
 	  <p class="lead"><h5>A mini project is a bit of code which can be produced by a small group(nearly 3-4 members).<br>These projects can be created in C,C++,JAVA,J2EE etc.. topics like Cloud Computing , Networking,Big Data Analysis,Data Mining(if your group is intrested).<br>Real world projects are more appreciated rather than static projects.<br>Mini projects are expected to be finished within a span of nearly 3-4 months.Also you can extend the same project as your major project.<br>For this you need to talk to your mentor for further details.<br>A Mini Project is a fun activity if you are able to understand what topic to choose (Mentors of the team will help you for this) and later you apply what you have learntand learn now this as well and then you will be able to build a small successfull project.<br>Feel free to ceck all the mini projects listed below</h5> </p>
