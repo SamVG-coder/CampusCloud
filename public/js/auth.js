@@ -3,7 +3,7 @@ function validate(checker){
     switch(checker){
         case 1 : 
         var fname=document.getElementById("fname").value;
-        RegExp1= /^[a-zA-Z]{1,20}$/;
+        RegExp1= /^[a-z A-Z]{1,20}$/;
         if(!RegExp1.test(fname)){
             document.getElementById("error").innerHTML="Error : Invalid First name.";
             document.getElementById("error").style.visibility="visible";
@@ -14,7 +14,7 @@ function validate(checker){
         break;
     case 2 : 
         var lname=document.getElementById("lname").value;
-        RegExp2= /^[a-zA-Z]{1,30}$/;
+        RegExp2= /^[a-z A-Z]{1,30}$/;
         if(!RegExp2.test(lname)){
             document.getElementById("error").innerHTML="Error : Invalid Last name.";
             document.getElementById("error").style.visibility="visible";
