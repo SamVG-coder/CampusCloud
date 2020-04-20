@@ -5,12 +5,9 @@ const User=require('../models/user');
 const flash = require('connect-flash');
 const mongoose = require("mongoose");
 
-mongoose.Promise = global.Promise;
-mongoose.connect("mongodb+srv://admin:ccadmin@campuscloud-4xzaj.mongodb.net/test?retryWrites=true&w=majority/userDB", {useNewUrlParser: true ,useUnifiedTopology: true});
-mongoose.set("useCreateIndex", true);  
-const loginHanding=(req,usn, password, done)=> {
+const loginHanding=(req,username, password, done)=> {
 
-      User.findOne({ usn: usn }, (err, user)=> {
+      User.findOne({ usn: username }, (err, user)=> {
         if (err) { return done(err); }
         if (!user) {
           return done(null, false, req.flash('error_msg','Incorrect username.' ));
