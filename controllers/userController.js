@@ -28,7 +28,7 @@ exports.createUser=("/register",(req,res)=>{
         Student.findOne({usn:newUser.usn},(err, User)=>{
           console.log(foundUser)
           if( User){
-          error_msg='Entered email and usn is not matching. USN: '+User.usn+'is matching with email: '+User.email;
+          error_msg='Entered email and usn is not matching. USN: '+User.usn+' is matching with email: '+User.email+'Try to register with the above details';
           res.render('user/signup',{error_msg:error_msg , pageTitle:'Sign Up'})
           }
           })
