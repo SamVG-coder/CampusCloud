@@ -19,6 +19,7 @@ exports.getLoginPage=(req, res)=>{
 }
 
 exports.createUser=("/register",(req,res)=>{
+    req.body.usn=req.body.usn.toUpperCase();
     var newUser=new User(req.body);
     var userMail=req.body.email;
     Student.findOne({$and :[{usn:newUser.usn},{email:newUser.email}]},(err, foundUser)=>{
@@ -201,6 +202,7 @@ exports.setNewPassword=(req,res)=>{
 }
 
 exports.loginUser=(req, res, next)=> {
+  req.body.username=req.body.username.toUpperCase();
   passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/user/login",
