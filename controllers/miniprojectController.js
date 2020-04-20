@@ -19,7 +19,7 @@ exports.addProject=(req,res)=>{
                           {name:req.body.name_s3,usn:req.body.usn_s3}
                           );
   if(req.body.name_s4 && req.body.usn_s4){
-    project.teamMates.push([{name:req.body.name_s4,usn:req.body.usn_s4}]);
+    project.teamMates.push({name:req.body.name_s4,usn:req.body.usn_s4});
   }
   project.domain=req.body.domain;
   project.guide=req.body.guide;
