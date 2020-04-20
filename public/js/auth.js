@@ -25,7 +25,7 @@ function validate(checker){
         break;
     case 3 :
         var usn=document.getElementById("usn").value;
-        RegExp3=/2[sS][dD][1-2][4-9][Cc][sS][0-1][0-9][0-9]$/;
+        RegExp3=/2[sS][dD][1-2][4-9][Cc][sS][014][0-9][0-9]$/;
         if(!RegExp3.test(usn)){
             document.getElementById("error").innerHTML="Error : Invalid USN. (Use Format : 2SD**CS***)";
             document.getElementById("error").style.visibility="visible";
