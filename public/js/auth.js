@@ -55,7 +55,7 @@ function validateAll(){
     for (let i = 1; i <=4; i++) {
         var result=validate(i);
         if(result==false){
-            alert("Please fill Valid Deatails");
+            alert("Please fill Valid Details");
             return false;
         }
     }

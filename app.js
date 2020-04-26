@@ -14,6 +14,7 @@ const homeRoutes = require('./routes/homeRoutes');
 const userRoutes = require('./routes/userRoutes');
 const majorprojectRoutes = require('./routes/majorprojectRoutes');
 const miniprojectRoutes = require('./routes/miniprojectRoutes');
+const materialRoutes=require('./routes/materialRoutes');
 
 require('./config/is-auth');
 
@@ -46,6 +47,7 @@ app.use(flash());
 app.use('/major',majorprojectRoutes);
 app.use('/mini',miniprojectRoutes);
 app.use('/user',userRoutes);
+app.use('/material',materialRoutes);
 app.use('',homeRoutes);
 
 

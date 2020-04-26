@@ -13,4 +13,8 @@ router.get('/majorproject',homeController.getMajorProjectPage);
 
 router.get('/miniproject',homeController.getMiniProjectPage);
 
+router.get('/studymaterial',homeController.getStudymaterialPage);
+
 module.exports = router;
+
+

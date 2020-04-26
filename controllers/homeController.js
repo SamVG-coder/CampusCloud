@@ -29,4 +29,10 @@ exports.getHomePage = (req, res) => {
     });
   };
   
+  exports.getStudymaterialPage = (req , res) => {
+    res.render('home/studymaterial', {
+      path: '/studymaterial',
+      isAuth:req.isAuthenticated(),
+    });
+  };
   

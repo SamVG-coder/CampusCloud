@@ -1,0 +1,143 @@
+<%- include('../partials/home-header.ejs') %>
+<link rel="stylesheet" href="/css/studymaterial.css">
+      </head>
+
+     <body>
+        <%- include('../includes/navigation.ejs') %>
+
+
+        <div class="jumbotron jumbotron-fluid">
+         <div class="jumbotron head">
+          <div class="container">
+             <h1 class="display-4"><b>Study Materials</b></h1>
+             <p class="lead" style="color: #ffff66 ;">Subject-wise study material & important resources for complete preparation for your exams.</p>
+            </div>
+        </div>
+          <br>
+        </div>
+        <br>
+        <center><h1 class="display-6" style="color: #2e5693;"><b>Add Study Materials:</b></h1></center>
+        <div class="row">
+            <div class="col-md-6 " >
+                <div id=check >
+                  <br>
+                  <center><h3>Enter the details </h3></center>
+                  <br>
+                  <form action="/material/submit" method="post"  onsubmit="return validateAll()">
+                  <label for="Semester">Select Semester :</label><br>
+                  <select data-target="secondList" id ="Semester" name="semester" class="firstList selectFilter custom-select">
+                  <option data-ref="one" >Semester 1</option>
+                  <option data-ref="two" >Semester 2</option>
+                  <option data-ref="three">Semester 3</option>
+                  <option data-ref="four">Semester 4</option>
+                  <option data-ref="five">Semester 5</option>
+                  <option data-ref="six">Semester 6</option>
+                  <option data-ref="seven">Semester 7</option>
+                  <option data-ref="eight">Semester 8</option>
+                  </select>
+                  <br />
+                  <label for="Subject">Select Subject :</label><br>
+                  <select data-target="thirdList" id ="Subject" name ="subject" class="secondList selectFilter  custom-select" required >
+                  <option data-belong="one" >Engineering mathematics 1</option>
+                  <option data-belong="one" >Engineering Physics</option>
+                  <option data-belong="one" >Engineering mechanics</option>
+                  <option data-belong="one" >Basic Electrical Engineering</option>
+                  <option data-belong="one" >Elements of mechanical engineering</option>
+                  <option data-belong="one" >Engineering physics lab</option>
+                  <option data-belong="one" >Kannada</option>
+                  <option data-belong="two">Engineering mathematics 2</option>
+                  <option data-belong="two">Engineering chemistry</option>
+                  <option data-belong="two">Basic Electronics</option>
+                  <option data-belong="two">Problem solving and programming in C</option>
+                  <option data-belong="two">Engineering Graphics</option>
+                  <option data-belong="two">Functional English</option>
+                  <option data-belong="two">Environmental science</option>
+                  <option data-belong="three">Engineering mathematics 3</option>
+                  <option data-belong="three">Digital electronics</option>
+                  <option data-belong="three">Discrete structure in computer science</option>
+                  <option data-belong="three">Data structure and applications</option>
+                  <option data-belong="three">Computer organization and architecture</option>
+                  <option data-belong="three">Introduction to Unix operating systems</option>
+                  <option data-belong="four">Engineering mathematics 4</option>
+                  <option data-belong="four">ARM Processor</option>
+                  <option data-belong="four">Finite automata and formal languages/option>
+                  <option data-belong="four">Object oriented programming Analysis and design of algorithms</option>
+                  <option data-belong="four">Operating systems</option>
+                  <option data-belong="four">Introductory project</option>
+                  <option data-belong="five">Mgmt,Entr and IPR</option>
+                  <option data-belong="five">Data communication</option>
+                  <option data-belong="five">Database Management system</option>
+                  <option data-belong="five">Compiler Design and system software</option>
+                  <option data-belong="five">Software engineering</option>
+                  <option data-belong="five">Soft skills</option>
+                  <option data-belong="six">Computer Networks</option>
+                  <option data-belong="six">Object Oriented Modeling and Design</option>
+                  <option data-belong="six">Industry oriented Programming Practices</option>
+                  <option data-belong="six">Unix System Progamming</option>
+                  <option data-belong="six">Digital Image Processing</option>
+                  <option data-belong="six">Principles of Programming</option>
+                  <option data-belong="six">Warehousing and Mining</option>
+                  <option data-belong="six">Advanced OOP</option>
+                  <option data-belong="six">Advanced DS & Algorithms</option>
+                  <option data-belong="six">Pattern Recognition</option>
+                  <option data-belong="six">Embedded Systems</option>
+                  <option data-belong="seven">Artificial Intelligence and machine Learning</option>
+                  <option data-belong="seven">Advanced Computer Archicture</option>
+                  <option data-belong="seven">Compiler Design and system software</option>
+                  <option data-belong="seven">Computer Graphics</option>
+                  <option data-belong="seven">Software testing</option>
+                  <option data-belong="seven">web technology</option>
+                  <option data-belong="seven">Operations Research</option>
+                  <option data-belong="seven">Multicore Architecture and Programming</option>
+                  <option data-belong="eight">Distributed Systems</option>
+                  <option data-belong="eight">Technical seminar Cryptography & Network Security</option>
+                  <option data-belong="eight">Cloud Computing Network Management</option>
+                  <option data-belong="eight">Data Science</option>
+                  <option data-belong="eight">Mobile application & Development</option>
+                  <option data-belong="eight">Ontology & Semantic Web</option>
+        
+                  </select>
+                  <br>
+                  <label for="topic">Enter topic name :</label><br>
+          <div class="input-group " id="search">
+            <input type="text" id=" topic" class="form-control" placeholder="Enter here"  required >
+          </div>
+          <label for="stuffs"> Upload material :</label> 
+          <br>
+          <div id="stuffs" class="input-group">
+            <div class="input-group-prepend">
+              <div id="stuffs">
+               &nbsp; <input type="radio" value="file" id="radio_file" name="type" aria-label="Radio button for following text input">
+                <input type="file" id="file" aria-label="Text input with radio button">
+              </div>
+            </div>
+            <br>
+          </div>
+          <label for="stuffs"> Upload Link : </label><br>
+          <div id="stuffs" class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input id="radio_link" type="radio" name="type" aria-label="Radio button for following text input">
+              </div>
+            </div>
+            <input type="text" id="link" class="form-control" aria-label="Text input with radio button">
+          </div>
+          <br>
+        <center><button type="submit" class="btn btn-success">Submit</button></center>
+        </form>
+        <br>
+                 </div>
+              </div>
+              <div class="col-md-6">
+                  <div id="search-div">
+                      <br><br><br>
+                    <img id="bigImage" class="large-img" src="/images/material/AddMaterial.jpg"  width="100%" height="60%" >
+                  </div>
+              </div>
+
+              </div>
+        </div>
+        <script src="http://code.jquery.com/jquery.min.js"></script>
+<script src="/js/studymaterial.min.js"></script>
+</body>
+</html>
