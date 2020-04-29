@@ -8,8 +8,8 @@
   },
   "author": "Samarth Gaonkar",
   "license": "ISC",
-  "engines":{
-    "node":"v12.16.1"
+  "engines": {
+    "node": "v12.16.1"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -25,5 +25,14 @@
     "nodemailer": "^6.4.6",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SamVG-coder/CampusCloud.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SamVG-coder/CampusCloud/issues"
+  },
+  "homepage": "https://github.com/SamVG-coder/CampusCloud#readme"
 }
